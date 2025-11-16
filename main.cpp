@@ -2,8 +2,6 @@
 #include "include/doubly_linked_list.h"
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <numeric>
 
 struct color {
     std::string name;
@@ -15,6 +13,18 @@ struct color {
 
 int main() {
     fixed_block_memory_resource mr(4096);
+
+       
+    
+    doubly_linked_list<int> list(&mr);
+    
+    list.push_back(10);
+    list.pop_back();
+    
+    mr.print_allocated_blocks();
+    
+    std::cout << "\n==============================================\n";
+    
     doubly_linked_list<color> colors(&mr);
 
     colors.push_back(color("Red", 255, 0, 0));
@@ -28,9 +38,12 @@ int main() {
         std::cout << "  " << col.name << " (RGB: " << col.r << ", " << col.g << ", " << col.b << ")\n";
     }
 
-    // Без фигурных/без круглых скобок это объявление функции (most-vexing-parse).
-    // Создаём объект с дефолтным конструктором:
     fixed_block_memory_resource mr_2{};
+
+    std::cout << "\n==============================================\n";
+
+    mr_2.print_allocated_blocks();
+
     doubly_linked_list<void*> list_2(&mr_2);
 
     for (int i = 0; i < 100; ++i) {
@@ -42,8 +55,14 @@ int main() {
 
     list_2.print_list();
 
-    std::cout << "==============================================\n";
+    std::cout << "\n==============================================\n";
+
+    mr_2.print_allocated_blocks();
     
+    std::cout << "\n==============================================\n";
+
+    list_2.clear();
+    mr_2.print_allocated_blocks();
 
     return 0;
 }
