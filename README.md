@@ -50,23 +50,17 @@
 tasks/Laboratory_5/
 ├── CMakeLists.txt
 ├── main.cpp
-├── materials.md
 ├── README.md
 ├── include/
-│   ├── .h
-│   ├── .h
-│   ├── .h
-│   ├── .h
-│   ├── .h
-│   └── .h
+│   ├── fixed_block_memory_resource.h
+│   └── doubly_linked_list.h
 ├── src/
-│   ├── README.md
+│   └── fixed_block_memory_resource.cpp
 └── tests/
-    ├── test_.cpp
-    ├── test_.cpp
-    ├── test_.cpp
-    ├── test_.cpp
-    └── test_.cpp
+    ├── test_memory_resource.cpp
+    ├── test_doubly_linked_list.cpp
+    ├── test_struct.cpp
+    └── test_iterator.cpp
 ```
 
 ## Сборка и запуск проекта
